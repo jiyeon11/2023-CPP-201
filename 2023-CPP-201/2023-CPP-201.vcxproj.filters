@@ -15,7 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="문법\상속.cpp">
+=======
+    <ClCompile Include="반복문연습 .cpp">
+>>>>>>> a129fc2 (c++)
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
