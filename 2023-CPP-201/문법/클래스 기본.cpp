@@ -30,7 +30,7 @@ public:
 
 int main(void) 
 {
-	struct Student stu;
+	Student stu;
 	stu.name = "연지이";
 	
 	stu.hakbun = 2123;
