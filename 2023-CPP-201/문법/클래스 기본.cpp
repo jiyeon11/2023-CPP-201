@@ -10,7 +10,8 @@ class Student {
 public:
 	//생성자(constructor) : 객체가 생성될 때 호출되는 함수
 	//생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다. 
-	Student() {
+	Student()  //매개변수 없는 ver
+	{
 		name = "연지이";
 		hakbun = 2123;
 		age = 18;
@@ -18,6 +19,21 @@ public:
 		department = "뉴미디어 소프트웨어과";
 	}
 
+	Student(string _name, int _hakbun, int _age, int _sex, string _department) //매개변수 있는 ver
+	{
+		name = _name;
+		hakbun = _hakbun;
+		age = _age;
+		sex = _sex;
+		department = _department;
+		/*
+		this->name = name;
+		this->hakbun = hakbun;
+		this->age = age;
+		this->sex = sex;
+		this->department = department;
+		*/
+	}
 	//class는 멤버변수를 가질 수 있다.
 	void print(void) {
 		cout << "이름 : " << name << endl;
@@ -41,13 +57,10 @@ private:
 
 };
 
-
-
 	int main(void)
 	{
-		Student stu = Student();
+		Student stu = Student("씨쁠이",0001,12,0,"뉴미디어 씨쁠쁠과");
 
 		stu.print();
-
 		return 0;
 	}
