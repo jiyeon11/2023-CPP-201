@@ -52,8 +52,14 @@ private:
 
 	int main(void)
 	{
+		//정적할당
 		Student stu = Student("씨쁠이",0001,12,0,"뉴미디어 씨쁠쁠과");
+		//stu.print();
 
-		stu.print();
+		//동적할당
+		//TODO : 동적할당 해제하기
+		Student* stu2 = new Student("고윤정", 3100, 26, 01, "방송연예과");
+		stu2->print();
+
 		return 0;
 	}
