@@ -1,13 +1,8 @@
 ﻿//C++
 #include<iostream>
 #include<string>
+
 using namespace std;
-
-struct Actor {
-	string name;
-	string dialog;
-};
-
 
 
 //여러 data들을 하나의 의미있는 구조체로 묶어서 관리
@@ -26,20 +21,15 @@ public:
 		department = "뉴미디어 소프트웨어과";
 	}
 
-	Student(string _name, int _hakbun, int _age, int _sex, string _department) //매개변수 있는 ver
+	Student(string name, int hakbun, int age, int sex, string department) //매개변수 있는 ver
 	{
-		name = _name;
-		hakbun = _hakbun;
-		age = _age;
-		sex = _sex;
-		department = _department;
-		/*
+		//this : 객체 자기자신을 가리키는 포인터
+		//매개변수명과 멤버변수명이 같아도 구별가능
 		this->name = name;
 		this->hakbun = hakbun;
 		this->age = age;
 		this->sex = sex;
 		this->department = department;
-		*/
 	}
 	//class는 멤버변수를 가질 수 있다.
 	void print(void) {
@@ -68,16 +58,6 @@ private:
 	{
 		Student stu = Student("씨쁠이",0001,12,0,"뉴미디어 씨쁠쁠과");
 
-		//stu.print();
-
-		struct Actor KYLee;
-		KYLee.name = "이경영";
-		KYLee.dialog = "진행시켜";
-
-		struct Actor* ptr = &KYLee;
-
-		//ptr->name, (*ptr).name 같은 결과
-		cout << "이름 : " << ptr->name << endl;
-		cout << "대사 : " << (*ptr).dialog << endl;
+		stu.print();
 		return 0;
 	}
