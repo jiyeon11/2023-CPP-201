@@ -20,17 +20,13 @@ public:
 		sex = 1;
 		department = "뉴미디어 소프트웨어과";
 	}
-
-	Student(string name, int hakbun, int age, int sex, string department) //매개변수 있는 ver
+	// : 멤버변수 초기화를 하면 const 멤버변수도 초기화 할 수 있다.
+	Student(string _name, int _hakbun, int _age, int _sex, string _department) //매개변수 있는 ver
+		:name(_name), hakbun(_hakbun), age(_age), sex(_sex), department(_department)
 	{
-		//this : 객체 자기자신을 가리키는 포인터
-		//매개변수명과 멤버변수명이 같아도 구별가능
-		this->name = name;
-		this->hakbun = hakbun;
-		this->age = age;
-		this->sex = sex;
-		this->department = department;
 	}
+
+
 	//class는 멤버변수를 가질 수 있다.
 	void print(void) {
 		cout << "이름 : " << name << endl;
