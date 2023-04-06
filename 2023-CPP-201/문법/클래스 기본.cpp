@@ -57,9 +57,10 @@ private:
 		//stu.print();
 
 		//동적할당
-		//TODO : 동적할당 해제하기
 		Student* stu2 = new Student("고윤정", 3100, 26, 01, "방송연예과");
 		stu2->print();
+
+		delete stu2;
 
 		return 0;
 	}
