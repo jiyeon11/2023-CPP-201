@@ -52,11 +52,11 @@ private:
 
 	int main(void)
 	{
-		//정적할당
+		//정적할당 : 메모리의 크기가 컴파일할 때 결정됨
 		Student stu = Student("씨쁠이",0001,12,0,"뉴미디어 씨쁠쁠과");
 		//stu.print();
 
-		//동적할당
+		//동적할당 : 메모리의 크기가 실행할 때(runtime) 결정됨, heap영역
 		Student* stu2 = new Student("고윤정", 3100, 26, 01, "방송연예과");
 		stu2->print();
 
