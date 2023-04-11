@@ -11,7 +11,8 @@ using namespace std;
 class Student {
 public:
 	//생성자(constructor) : 객체가 생성될 때 호출되는 함수
-	//생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다. 
+	//생성자함수의 이름은 클래스명과 같다
+	//생성자는 반환형을 쓰지 않는다.
 	Student(){}
 	// : 멤버변수 초기화를 하면 const 멤버변수도 초기화 할 수 있다.
 	Student(string _name, int _hakbun, int _age, int _sex, string _department) //매개변수 있는 ver
