@@ -12,14 +12,7 @@ class Student {
 public:
 	//생성자(constructor) : 객체가 생성될 때 호출되는 함수
 	//생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다. 
-	Student()  //매개변수 없는 ver
-	{
-		name = "연지이";
-		hakbun = 2123;
-		age = 18;
-		sex = 1;
-		department = "뉴미디어 소프트웨어과";
-	}
+	Student(){}
 	// : 멤버변수 초기화를 하면 const 멤버변수도 초기화 할 수 있다.
 	Student(string _name, int _hakbun, int _age, int _sex, string _department) //매개변수 있는 ver
 		:name(_name), hakbun(_hakbun), age(_age), sex(_sex), department(_department)
@@ -36,6 +29,11 @@ public:
 		cout << "학과 : " << department << endl;
 	}
 
+	void set_name(string _name) { name = _name; }
+	void set_hakbun(int _hakbun) { hakbun = _hakbun; }
+	void set_age(int _age) { age = _age; }
+	void set_sex(int _sex) { sex = _sex; }
+	void set_department(string _department) { department = _department; }
 private:
 	string name;
 	//성능 때문에 문자열로 하지 않음.
@@ -55,10 +53,10 @@ private:
 		//정적할당 : 메모리의 크기가 컴파일할 때 결정됨
 		//Student stu = Student("씨쁠이",0001,12,0,"뉴미디어 씨쁠쁠과");
 		//stu.print();
-		Student stu3[2];
+		/*Student stu3[2];
 		for (int i = 0; i < 2; i++) {
 			stu3[i].print();
-		}
+		}*/
 		
 		//동적할당 : 메모리의 크기가 실행할 때(runtime) 결정됨, heap영역
 		// C++의 동적할당은 반드시 delete로 해제해야 메모리 누수를 막을 수 있음
@@ -66,6 +64,17 @@ private:
 		//stu2->print();   //단일객체는 멤버를 ->로 접근
 		//delete stu2;
 		Student* stu4 = new Student[2];
+		stu4[0].set_age(18);
+		stu4[0].set_name("지수");
+		stu4[0].set_hakbun(2112);
+		stu4[0].set_sex(1);
+		stu4[0].set_department("뉴미디어웹솔루션");
+
+		stu4[1].set_age(18);
+		stu4[1].set_name("혁수");
+		stu4[1].set_hakbun(2118);
+		stu4[1].set_sex(0);
+		stu4[1].set_department("뉴미디어소프트웨어");
 		for (int i = 0; i < 2; i++) {
 			stu4[i].print();  //배열의 요소에 해당하는 객체는 멤버를 .으로 접근
 		}
