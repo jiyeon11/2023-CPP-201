@@ -34,19 +34,20 @@ private:
 
 int main(void)
 {
-	//new로 동적할당한 공간은 반드시 delete로 해제시켜야 함
-	//만약 그렇지 않으면 메모리가 누수된다.
-	MString* str = new MString("Aitai 2-1");
+	MString str1 = MString("Aitai");
+	cout << str1.c_str() << endl;
 
-	cout << str->c_str() << endl;
-	
-	//str에 대한 delete는 진행되었으나, str->c_str_에 대한 delete가 진행되지 않음
-	//TODO : 이를 delete 해주는 소멸자(destructor) 구현하기
-	delete str;
 	return 0;
 }
 
 /*메모
+	생성자: 객체 생성될 때(메모리에 할당될 때) 호출되는 함수
+	특징: 클래스 이름과 같음, 반환형 없음
+	소멸자: 객체가 소멸될 때(메모리에 해제될 때) 호출되는 함수
+	특징: ~클래스 이름, 반환형과 매개변수가 없음
 
-
+	//복사생성자
+	:기존 객체의 값을 그대로 복사하는 생성자
+	얕은복사: 주소값만 복사, 원본객체에 종속
+	깊은 복사: 모든 값들을 새롭게 복사, 원본객체와 상관없이 독립
 */
