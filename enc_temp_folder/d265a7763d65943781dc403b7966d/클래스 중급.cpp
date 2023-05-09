@@ -21,6 +21,7 @@ public:
 	MString(const MString& rhs) 
 		: size_(rhs.size_),c_str_(rhs.c_str_)
 	{
+		cout << "복사생성자 호출" << endl;
 	}
 
 	//소멸자(destructor)
