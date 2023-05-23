@@ -59,7 +59,7 @@ int main(void)
 			snake.move(block, 0);
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-			snake_x++;
+			snake_x--;
 			snake.move(-block, 0);
 		}
 
