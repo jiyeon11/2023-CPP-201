@@ -37,7 +37,7 @@ int main(void)
 	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Snack Game");
 	//1초에 60번의 작업이 이루어 지도록 frame 조절
 	//컴퓨터 사양이 달라도 똑같은 속도로 처리함
-	window.setFramerateLimit(5);
+	window.setFramerateLimit(15);
 
 	srand(time(NULL));
 	Snake snake;
@@ -67,7 +67,7 @@ int main(void)
 
 		//input
 		//4개의 방향키가 중복으로 input되면 안됨
-		if (Keyboard::isKeyPressed(Keyboard::Up)){
+		if (Keyboard::isKeyPressed(Keyboard::Up)) {
 			snake.dir_ = DIR_UP;
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Down)) {
@@ -81,6 +81,8 @@ int main(void)
 		}
 
 		//update
+		printf("%d %d", snake.x_, snake.y_);
+		//뱀 이동
 		if (snake.dir_ == DIR_UP) {
 			snake.y_--;
 		}
@@ -93,6 +95,17 @@ int main(void)
 		else if (snake.dir_ == DIR_LEFT) {
 			snake.x_--;
 		}
+
+		//바운더리를 넘었을 때 더이상 벗어나지 않도록
+		if (snake.x_ < 0)
+			snake.x_ = 0;
+		if (snake.x_ >= w)
+			snake.x_ = w - 1;
+		if (snake.y_ < 0)
+			snake.y_ = 0;
+		if (snake.y_ >= h)
+			snake.y_ = h - 1;
+
 		snake.sprite_.setPosition(snake.x_ * block, snake.y_ * block);
 
 		//뱀이 사과를 먹으면 
