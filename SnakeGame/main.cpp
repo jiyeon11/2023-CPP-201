@@ -152,6 +152,9 @@ int main(void)
 
 	srand(time(NULL));
 
+	sf::Clock clock; //SMFL Clock 객체 생성
+	sf::Time elapsedTime;  //경과 시간을 저장할 SFML Time 객체
+
 	Font font;
 	if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
 	{
@@ -187,7 +190,11 @@ int main(void)
 				window.close();
 		}
 		
-		sprintf(info_text, "score : %d \n", snake.GetScore());
+		//경과  시간 계산 
+		elapsedTime = clock.getElapsedTime();
+		int seconds = elapsedTime.asSeconds();
+
+		sprintf(info_text, "score : %d time : %d \n", snake.GetScore(),seconds);
 		info.setString(info_text);
 
 		// input
