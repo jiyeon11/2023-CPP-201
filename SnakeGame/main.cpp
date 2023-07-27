@@ -35,8 +35,9 @@ public:
 
 class Snake {
 public:
-	Snake(int dir, int length, float thickness,int block)
-		:dir_(dir), length_(length),thickness_(thickness)
+	//score에 값을 주지 않으면 default로 0이 들어간다
+	Snake(int dir, int length, float thickness,int block, int score=0)
+		:dir_(dir), length_(length),thickness_(thickness), score_(score)
 	{
 		inner_ = block - thickness_;
 	}
@@ -118,20 +119,22 @@ public:
 
 	int GetLength(void) { return length_; }
 	int GetDir(void) { return dir_; }
+	int GetScore(void) { return score_; }
 	float GetThickness(void) { return thickness_; }
 	float GetInner(void) { return inner_; }
 
 	void SetDir(int dir) { dir_ = dir; }
 	void SetLength(int length) { length_ = length; }
+	void SetScore(int score) { score_ = score; }
 	void SetThickness(float thickness) { thickness_ = thickness; }
 	void SetInner(float inner) { inner_ = inner; }
 
-	//길이 1 증가
 	void IncLength(void) { length_++;}
-	//TODO: 나중에 private로 바꾸기
+	void IncScore(int val) { score_ += val; }
 private:
 	int dir_;
 	int length_;
+	int score_;
 	float thickness_;		//외피두께
 	float inner_;			//내부두께
 	Object body_[BODY_MAX];
@@ -148,6 +151,19 @@ int main(void)
 	window.setFramerateLimit(20);
 
 	srand(time(NULL));
+
+	Font font;
+	if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
+	{
+		printf("폰트 불러오기 실패");
+			return 1;
+	}
+	Text info;
+	info.setFont(font);
+	info.setCharacterSize(60);
+	info.setFillColor(Color::Magenta);
+
+	char info_text[100];
 
 	Snake snake = Snake(DIR_DOWN, 1, 5.f,block);
 	
@@ -170,6 +186,9 @@ int main(void)
 			if (e.type == Event::Closed)
 				window.close();
 		}
+		
+		sprintf(info_text, "score : %d \n", snake.GetScore());
+		info.setString(info_text);
 
 		// input
 		// 네 개의 방향키가 중복으로 input되면 안됨
@@ -195,6 +214,7 @@ int main(void)
 			apple.x_ = rand() % w;
 			apple.y_ = rand() % h;
 			apple.sprite_.setPosition(apple.x_ * block, apple.y_ * block);
+			snake.IncScore(100);
 			if (snake.GetLength() < BODY_MAX)
 				snake.IncLength();
 		}
@@ -209,7 +229,7 @@ int main(void)
 		snake.Render(&window);
 
 		window.draw(apple.sprite_);	// 뱀과 사과가 겹칠경우 사과가 위에 나옴
-
+		window.draw(info);
 		window.display();
 	}
 
