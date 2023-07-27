@@ -101,20 +101,21 @@ public:
 		// 바운더리를 넘었을 때 게임오버 발생
 		if (body_[0].x_ < 0) {
 			body_[0].x_ = 0;
-			is_gameover = true;
 		}
 		else if (body_[0].x_ >= w) {
 			body_[0].x_ = w - 1;
-			is_gameover = true;
 		}
 		else if (body_[0].y_ < 0) {
 			body_[0].y_ = 0;
-			is_gameover = true;
 		}
 		else if (body_[0].y_ >= h) {
 			body_[0].y_ = h - 1;
-			is_gameover = true;
 		}
+		//바운더리를 넘지 않은 경우(정상적인 경우)
+		else {
+			return;
+		}
+		is_gameover = true;
 	}
 
 	void UpdatePosition(void) 
